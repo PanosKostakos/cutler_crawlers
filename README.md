@@ -1,4 +1,4 @@
-# Cutler Crawlers
+# Twitter
 Here you can find working crawlers and prototypes being tested for the CUTLER platform. Crawlers are tested with mongodb://localhost. Users should provide own Access tokens (CONSUMER_KEY, CONSUMER_SECRET,ACCESS_TOKEN, ACCESS_TOKEN_SECRET) that can be obtained via https://apps.twitter.com/
 
 **List of Crawlers**
