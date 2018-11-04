@@ -16,7 +16,6 @@ Eco_OECD_RegionEco_RegEmIndu <- "SNA_2008.EMP_IND_TOTAL+EMP_IND_10_VA+EMP_IND_10
 Eco_OECD_RegionEco_RegGVAWorker <- "SNA_2008.GVA_IND_TOTAL+GVA_IND_10_VA+GVA_IND_10_VC+GVA_IND_10_VB_E+GVA_IND_10_VF+GVA_IND_10_VG_I+GVA_IND_10_VJ+GVA_IND_10_VK+GVA_IND_10_VL+GVA_IND_10_VM_N+GVA_IND_10_VO_Q+GVA_IND_10_VR_U.PW_CURR_PR+PW_USD_PPP+PW_REAL_PR+PW_REAL_PPP.ALL"
 Eco_OECD_RegionEco_RegIncPC <- "SNA_2008.INCOME_DISP+INCOME_PRIM.PC_CURR_PR+PC_USD_PPP+PC_REAL_PR+PC_REAL_PPP.ALL"
 
-
 #Define the Filter in new objects. 
 filter_PiThess_Eco_OECD_RegionLabour_EmpPlaRes <-paste(PiThess, Eco_OECD_RegionLabour_EmpPlaRes,sep=".")
 filter_PiAntw_Eco_OECD_RegionLabour_EmpPlaRes <-paste(PiAntw, Eco_OECD_RegionLabour_EmpPlaRes,sep=".")
@@ -50,7 +49,6 @@ filter_PiThess_Eco_OECD_RegionEco_RegIncPC <-paste(PiThess, Eco_OECD_RegionEco_R
 filter_PiAntw_Eco_OECD_RegionEco_RegIncPC <-paste(PiAntw, Eco_OECD_RegionEco_RegIncPC,sep=".")
 filter_PiCork_Eco_OECD_RegionEco_RegIncPC <-paste(PiCork, Eco_OECD_RegionEco_RegIncPC,sep=".")
 filter_PiAntal_Eco_OECD_RegionEco_RegIncPC <-paste(PiAntal, Eco_OECD_RegionEco_RegIncPC,sep=".")
-
 
 #Make the request with the "get_dataset" function and save the data in unique dataframes.
 PiThess_Eco_OECD_RegionLabour_EmpPlaRes <-get_dataset("REGION_LABOUR", filter=filter_PiThess_Eco_OECD_RegionLabour_EmpPlaRes, pre_formatted = TRUE)
