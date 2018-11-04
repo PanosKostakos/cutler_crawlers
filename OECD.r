@@ -1,12 +1,12 @@
 library(OECD)
 
-# Define Locations (L3)
+#Define our Locations (L3)
 PiThess <- "1+2+3_PU+3_IN+3_PR+NOG.GRC+EL527"
 PiCork <- "1+2+3_PU+3_IN+3_PR+NOG.IRL+IE025"
 PiAntw <- "1+2+3_PU+3_IN+3_PR+NOG.BEL+BE211"
 PiAntal <-"1+2+3_PU+3_IN+3_PR+NOG.TUR+TR611"
 
-#Define economic Indicators in new objects. 
+#Define the economic Indicators that we need to crawl. 
 Eco_OECD_RegionLabour_EmpPlaRes <- "EMP_Y15_MAX+EMP_Y15_64+EMP_Y15_24+EMP_RA_15_MAX+EMP_RA_15_64+EMP_RA_15_MAX_GR_2001+EMP_RA_15_64_GR_2001+EMP_RA_15_MAX_GR_2007+EMP_RA_15_64_GR_2007+EMP_RA_15_64_SEXDIF+EMP_RA_15_MAX_SEXDIF+EMP_PT+EMP_PT_SH+EMP_PT_SH_SEXDIF.T+F+M.ALL"
 Eco_OECD_RegionLabour_LfPartRa <- "REG_LFS+POP_Y15_MAX+POP_Y15_64+LF_Y15_MAX+LF_Y15_64+LF_Y15_24+PARTIC_RA_15_MAX+PARTIC_RA_15_64+PARTIC_RA_15_MAX_GR_2001+PARTIC_RA_15_64_GR_2001+PARTIC_RA_15_MAX_GR_2007+PARTIC_RA_15_64_GR_2007+PARTIC_RA_15_MAX_SEXDIF+PARTIC_RA_15_64_SEXDIF.T+F+M.ALL"
 Eco_OECD_RegionLabour_UnemReg <- "UNEM+UNEM_RA_15_MAX+UNEM_RA_15_64+UNEM_RA_15_MAX_GR_2007+UNEM_RA_15_64_GR_2007+UNEM_RA_15_MAX_SEXDIF+UNEM_RA_15_64_SEXDIF.T+F+M.ALL"
@@ -16,7 +16,7 @@ Eco_OECD_RegionEco_RegEmIndu <- "SNA_2008.EMP_IND_TOTAL+EMP_IND_10_VA+EMP_IND_10
 Eco_OECD_RegionEco_RegGVAWorker <- "SNA_2008.GVA_IND_TOTAL+GVA_IND_10_VA+GVA_IND_10_VC+GVA_IND_10_VB_E+GVA_IND_10_VF+GVA_IND_10_VG_I+GVA_IND_10_VJ+GVA_IND_10_VK+GVA_IND_10_VL+GVA_IND_10_VM_N+GVA_IND_10_VO_Q+GVA_IND_10_VR_U.PW_CURR_PR+PW_USD_PPP+PW_REAL_PR+PW_REAL_PPP.ALL"
 Eco_OECD_RegionEco_RegIncPC <- "SNA_2008.INCOME_DISP+INCOME_PRIM.PC_CURR_PR+PC_USD_PPP+PC_REAL_PR+PC_REAL_PPP.ALL"
 
-#Define the Filter in new objects. 
+# Define the filters of the request by combining locations and indicators.  
 filter_PiThess_Eco_OECD_RegionLabour_EmpPlaRes <-paste(PiThess, Eco_OECD_RegionLabour_EmpPlaRes,sep=".")
 filter_PiAntw_Eco_OECD_RegionLabour_EmpPlaRes <-paste(PiAntw, Eco_OECD_RegionLabour_EmpPlaRes,sep=".")
 filter_PiCork_Eco_OECD_RegionLabour_EmpPlaRes <-paste(PiCork, Eco_OECD_RegionLabour_EmpPlaRes,sep=".")
@@ -50,7 +50,7 @@ filter_PiAntw_Eco_OECD_RegionEco_RegIncPC <-paste(PiAntw, Eco_OECD_RegionEco_Reg
 filter_PiCork_Eco_OECD_RegionEco_RegIncPC <-paste(PiCork, Eco_OECD_RegionEco_RegIncPC,sep=".")
 filter_PiAntal_Eco_OECD_RegionEco_RegIncPC <-paste(PiAntal, Eco_OECD_RegionEco_RegIncPC,sep=".")
 
-#Make the request with the "get_dataset" function and save the data in unique dataframes.
+#Make the request using the "get_dataset" function and save the data in unique dataframes. 
 PiThess_Eco_OECD_RegionLabour_EmpPlaRes <-get_dataset("REGION_LABOUR", filter=filter_PiThess_Eco_OECD_RegionLabour_EmpPlaRes, pre_formatted = TRUE)
 PiAntw_Eco_OECD_RegionLabour_EmpPlaRes <-get_dataset("REGION_LABOUR", filter=filter_PiAntw_Eco_OECD_RegionLabour_EmpPlaRes, pre_formatted = TRUE)
 PiCork_Eco_OECD_RegionLabour_EmpPlaRes <-get_dataset("REGION_LABOUR", filter=filter_PiCork_Eco_OECD_RegionLabour_EmpPlaRes, pre_formatted = TRUE)
