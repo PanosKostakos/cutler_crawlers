@@ -1,7 +1,7 @@
 library(tidyverse)
 library(OECD)
 
-# Step 1: Define Locations (L3)
+# Step 1: Define Locations (all levels)
 locations <- data_frame(
   location_name = c("PiThess", "PiCork", "PiAntw", "PiAntal"), 
   location_code = c(
