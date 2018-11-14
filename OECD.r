@@ -1,7 +1,7 @@
 library(tidyverse)
 library(OECD)
 
-# Step 1: Define Locations (all levels)
+# Step 1: Define Locations (L3)
 locations <- data_frame(
   location_name = c("PiThess", "PiCork", "PiAntw", "PiAntal"), 
   location_code = c(
@@ -50,13 +50,24 @@ requests <- requests %>%
     filter = paste(location_code, indicator, sep=".")
   )
 
-# Run get_dataset for every request
-data_frames <- map2(requests$dataset, 
-                    requests$filter, 
-                    safely(~get_dataset(.x, filter = .y, pre_formatted = TRUE)))
+# Infinite loop
+while (TRUE){
 
-# Set names to resulting list
-names(data_frames) <- paste(requests$location_name, requests$indic_id, sep = "_")
+    # Run get_dataset for every request
+    data_frames <- map2(requests$dataset, 
+                        requests$filter, 
+                        safely(~get_dataset(.x, filter = .y, pre_formatted = TRUE)))
+    
+    # Set names to resulting list
+    names(data_frames) <- paste(requests$location_name, requests$indic_id, sep = "_")
+    
+    # If all errors are NULL, i.e. there is no errors break from loop
+    if (all(map_lgl(data_frames, ~is.null(.$error)))) break 
+    
+    # Sleep for half an hour before next try
+    Sys.sleep(1800)
+
+}
 
 # You can access that list by index or name
 data_frames[[1]]
@@ -66,5 +77,5 @@ data_frames[["PiThess_Eco_OECD_RegionLabour_EmpPlaRes"]]
 data_frames[["PiThess_Eco_OECD_RegionLabour_EmpPlaRes"]]$result
 
 # Second elemnet is error
-# If error is NULL there weren't any error during execution
+# If error is NULL there weren't any errors during execution
 data_frames[["PiThess_Eco_OECD_RegionLabour_EmpPlaRes"]]$error
