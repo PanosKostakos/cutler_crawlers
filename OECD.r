@@ -1,3 +1,8 @@
+## Written by Panos Kostakos
+## University of Oulu
+## 2018
+## The code sends requests to OECD.stat using the OECD Library and returns a list of tables based on
+## user-defined locations and economic indicators
 library(tidyverse)
 library(OECD)
 
